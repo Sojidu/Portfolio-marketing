@@ -264,6 +264,16 @@
   .car-btn.prev{left:0;}  .car-btn.next{right:0;}
   .car-hint{text-align:center;font-size:.78rem;color:var(--ink-soft);margin-top:8px;}
 
+  /* posts carousel */
+  .slide.post-slide{width:clamp(220px,60vw,260px);}
+  .slide.post-slide img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:22px;background:#14101f;border:6px solid #fff;box-shadow:var(--shadow);cursor:zoom-in;display:block;transition:transform .25s;}
+  .slide.post-slide img:hover{transform:translateY(-4px);}
+  .lightbox{position:fixed;inset:0;background:rgba(20,16,31,.92);display:none;align-items:center;justify-content:center;z-index:999;padding:6vh 4vw;}
+  .lightbox.open{display:flex;}
+  .lightbox img{max-width:100%;max-height:88vh;border-radius:18px;box-shadow:0 30px 80px -20px rgba(0,0,0,.6);}
+  .lightbox-close{position:absolute;top:22px;right:26px;width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.14);color:#fff;font-size:1.4rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;}
+  .lightbox-close:hover{background:rgba(255,255,255,.26);}
+
   /* contact */
   .contact{background:linear-gradient(150deg,var(--violet) 0%,var(--violet-deep) 100%);color:#fff;border-radius:36px;padding:64px 6vw;text-align:center;overflow:hidden;position:relative;margin:0 6vw 70px;}
   .contact h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(2rem,4vw,3rem);margin-bottom:14px;}
@@ -329,6 +339,7 @@
     <a href="#proyectos" data-en="Projects">Proyectos</a>
     <a href="#trabajos" data-en="Work">Trabajos</a>
     <a href="#videos" data-en="Video">Vídeos</a>
+    <a href="#posts" data-en="Posts">Posts</a>
     <a href="#porque" data-en="Why me">Por qué yo</a>
     <a href="#contacto" class="nav-cta" data-en="Let's talk">Hablemos</a>
   </div>
@@ -556,6 +567,34 @@
     <p class="car-hint" data-en="◂ Swipe or use the arrows · tap to unmute ▸">◂ Desliza o usa las flechas · toca para activar el sonido ▸</p>
   </div>
 </section>
+<!-- ===== POSTS ===== -->
+<section class="sec" id="posts">
+  <div class="dots-bg" style="opacity:.1;"></div>
+  <span class="spark" style="top:14%;left:8%;font-size:1rem;">✦</span>
+  <span class="spark" style="bottom:14%;right:7%;font-size:1.1rem;animation-delay:1s;">✦</span>
+  <div class="wrap">
+    <span class="tag" data-en="Graphic design">Diseño gráfico</span>
+    <h2 class="serif" data-en="Posts I've designed">Posts que he diseñado</h2>
+    <p class="intro" data-en="Social media post designs I've created as personal design practice, from concept to final layout.">Diseños de posts para redes sociales que he creado como práctica personal, desde el concepto hasta la maquetación final.</p>
+    <div class="carousel">
+      <button class="car-btn prev" aria-label="Anterior">‹</button>
+      <div class="car-track" id="postTrack">
+        <div class="slide post-slide"><img src="assets/posts/ayuntamiento-sevilla.webp" alt="Post · Ayuntamiento de Sevilla" loading="lazy" width="900" height="1125"><div class="slide-cap" data-en="Design · Seville City Council">Diseño · Ayuntamiento de Sevilla</div></div>
+        <div class="slide post-slide"><img src="assets/posts/heladeria-la-abuela.webp" alt="Post · Heladería La Abuela" loading="lazy" width="900" height="1125"><div class="slide-cap" data-en="Design · La Abuela ice cream shop">Diseño · Heladería La Abuela</div></div>
+        <div class="slide post-slide"><img src="assets/posts/ice-bobba.webp" alt="Post · Ice Bobba Tea" loading="lazy" width="900" height="1125"><div class="slide-cap" data-en="Design · Ice Bobba Tea">Diseño · Ice Bobba Tea</div></div>
+        <div class="slide post-slide"><img src="assets/posts/matcha.webp" alt="Post · Matcha" loading="lazy" width="900" height="1125"><div class="slide-cap" data-en="Design · Matcha">Diseño · Matcha</div></div>
+        <div class="slide post-slide"><img src="assets/posts/nuevo-sabor.webp" alt="Post · Nuevo sabor, macarons de pistacho" loading="lazy" width="900" height="1125"><div class="slide-cap" data-en="Design · New flavour (macarons)">Diseño · Nuevo sabor (macarons)</div></div>
+        <div class="slide post-slide"><img src="assets/posts/vivagym.webp" alt="Post · VivaGym" loading="lazy" width="900" height="1125"><div class="slide-cap" data-en="Design · VivaGym">Diseño · VivaGym</div></div>
+      </div>
+      <button class="car-btn next" aria-label="Siguiente">›</button>
+    </div>
+    <p class="car-hint" data-en="◂ Swipe or use the arrows · tap a post to zoom in ▸">◂ Desliza o usa las flechas · toca un post para verlo en grande ▸</p>
+  </div>
+</section>
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Cerrar">✕</button>
+  <img id="lightboxImg" src="" alt="">
+</div>
 <!-- ===== HERRAMIENTAS + HABILIDADES ===== -->
 <section class="sec" id="herramientas">
   <div class="grid-bg"></div>
@@ -688,6 +727,24 @@
     if(nx)nx.addEventListener("click",function(){go(curIdx()+1);});
     var vio=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target.querySelector("video");if(!v)return;if(e.isIntersecting&&e.intersectionRatio>0.6){v.play().catch(function(){});}else{v.pause();}});},{root:track,threshold:[0,0.6,1]});
     slides.forEach(function(s){vio.observe(s);var v=s.querySelector("video");if(v)v.addEventListener("click",function(){v.muted=!v.muted;if(!v.muted)v.play().catch(function(){});});});
+  })();
+  // posts carousel + lightbox
+  (function(){
+    var track=document.getElementById("postTrack"); if(!track)return;
+    var carousel=track.closest(".carousel");
+    var slides=[].slice.call(track.querySelectorAll(".slide"));
+    function curIdx(){var c=track.scrollLeft+track.clientWidth/2,best=0,bd=1e9;slides.forEach(function(s,i){var sc=s.offsetLeft+s.offsetWidth/2,d=Math.abs(sc-c);if(d<bd){bd=d;best=i;}});return best;}
+    function go(i){i=Math.max(0,Math.min(slides.length-1,i));slides[i].scrollIntoView({behavior:"smooth",inline:"center",block:"nearest"});}
+    var p=carousel.querySelector(".car-btn.prev"),nx=carousel.querySelector(".car-btn.next");
+    if(p)p.addEventListener("click",function(){go(curIdx()-1);});
+    if(nx)nx.addEventListener("click",function(){go(curIdx()+1);});
+    var lb=document.getElementById("lightbox"),lbImg=document.getElementById("lightboxImg"),lbClose=document.getElementById("lightboxClose");
+    function openLb(src,alt){lbImg.src=src;lbImg.alt=alt;lb.classList.add("open");}
+    function closeLb(){lb.classList.remove("open");lbImg.src="";}
+    slides.forEach(function(s){var img=s.querySelector("img");if(img)img.addEventListener("click",function(){openLb(img.src,img.alt);});});
+    if(lbClose)lbClose.addEventListener("click",closeLb);
+    if(lb)lb.addEventListener("click",function(e){if(e.target===lb)closeLb();});
+    document.addEventListener("keydown",function(e){if(e.key==="Escape")closeLb();});
   })();
 
   // cursor star trail ✦
