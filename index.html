@@ -265,9 +265,19 @@
   .car-hint{text-align:center;font-size:.78rem;color:var(--ink-soft);margin-top:8px;}
 
   /* posts carousel */
-  .slide.post-slide{width:clamp(220px,60vw,260px);}
-  .slide.post-slide img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:22px;background:#14101f;border:6px solid #fff;box-shadow:var(--shadow);cursor:zoom-in;display:block;transition:transform .25s;}
-  .slide.post-slide img:hover{transform:translateY(-4px);}
+  .slide.post-slide{width:clamp(270px,82vw,380px);}
+  .ig-card{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);transition:transform .25s;}
+  .slide.post-slide:hover .ig-card{transform:translateY(-4px);}
+  .ig-head{display:flex;align-items:center;gap:10px;padding:12px 14px;}
+  .ig-avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--coral),var(--violet));color:#fff;font-size:.72rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex:0 0 auto;}
+  .ig-meta{flex:1;line-height:1.25;}
+  .ig-meta b{display:block;font-size:.86rem;color:var(--ink);}
+  .ig-dots{color:var(--ink-soft);font-weight:700;letter-spacing:1px;font-size:.9rem;}
+  .ig-card img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;display:block;cursor:zoom-in;background:#14101f;}
+  .ig-actions{display:flex;align-items:center;gap:14px;padding:10px 14px 4px;font-size:1.15rem;}
+  .ig-actions .ig-save{margin-left:auto;}
+  .ig-cap{padding:2px 14px 16px;font-size:.84rem;color:var(--ink);}
+  .ig-cap b{margin-right:6px;}
   .lightbox{position:fixed;inset:0;background:rgba(20,16,31,.92);display:none;align-items:center;justify-content:center;z-index:999;padding:6vh 4vw;}
   .lightbox.open{display:flex;}
   .lightbox img{max-width:100%;max-height:88vh;border-radius:18px;box-shadow:0 30px 80px -20px rgba(0,0,0,.6);}
@@ -579,12 +589,42 @@
     <div class="carousel">
       <button class="car-btn prev" aria-label="Anterior">‹</button>
       <div class="car-track" id="postTrack">
-        <div class="slide post-slide"><img src="assets/posts/ayuntamiento-sevilla.webp" alt="Post · Ayuntamiento de Sevilla" loading="lazy" width="900" height="1125"><div class="slide-cap" data-en="Design · Seville City Council">Diseño · Ayuntamiento de Sevilla</div></div>
-        <div class="slide post-slide"><img src="assets/posts/heladeria-la-abuela.webp" alt="Post · Heladería La Abuela" loading="lazy" width="900" height="1125"><div class="slide-cap" data-en="Design · La Abuela ice cream shop">Diseño · Heladería La Abuela</div></div>
-        <div class="slide post-slide"><img src="assets/posts/ice-bobba.webp" alt="Post · Ice Bobba Tea" loading="lazy" width="900" height="1125"><div class="slide-cap" data-en="Design · Ice Bobba Tea">Diseño · Ice Bobba Tea</div></div>
-        <div class="slide post-slide"><img src="assets/posts/matcha.webp" alt="Post · Matcha" loading="lazy" width="900" height="1125"><div class="slide-cap" data-en="Design · Matcha">Diseño · Matcha</div></div>
-        <div class="slide post-slide"><img src="assets/posts/nuevo-sabor.webp" alt="Post · Nuevo sabor, macarons de pistacho" loading="lazy" width="900" height="1125"><div class="slide-cap" data-en="Design · New flavour (macarons)">Diseño · Nuevo sabor (macarons)</div></div>
-        <div class="slide post-slide"><img src="assets/posts/vivagym.webp" alt="Post · VivaGym" loading="lazy" width="900" height="1125"><div class="slide-cap" data-en="Design · VivaGym">Diseño · VivaGym</div></div>
+        <div class="slide post-slide"><div class="ig-card">
+          <div class="ig-head"><span class="ig-avatar">SJ</span><div class="ig-meta"><b>soraya.jimenez</b></div><span class="ig-dots">•••</span></div>
+          <img src="assets/posts/ayuntamiento-sevilla.webp" alt="Post · Ayuntamiento de Sevilla" loading="lazy" width="900" height="1125">
+          <div class="ig-actions">🤍 💬 📤 <span class="ig-save">🔖</span></div>
+          <div class="ig-cap"><b>soraya.jimenez</b><span data-en="Design · Seville City Council">Diseño · Ayuntamiento de Sevilla</span></div>
+        </div></div>
+        <div class="slide post-slide"><div class="ig-card">
+          <div class="ig-head"><span class="ig-avatar">SJ</span><div class="ig-meta"><b>soraya.jimenez</b></div><span class="ig-dots">•••</span></div>
+          <img src="assets/posts/heladeria-la-abuela.webp" alt="Post · Heladería La Abuela" loading="lazy" width="900" height="1125">
+          <div class="ig-actions">🤍 💬 📤 <span class="ig-save">🔖</span></div>
+          <div class="ig-cap"><b>soraya.jimenez</b><span data-en="Design · La Abuela ice cream shop">Diseño · Heladería La Abuela</span></div>
+        </div></div>
+        <div class="slide post-slide"><div class="ig-card">
+          <div class="ig-head"><span class="ig-avatar">SJ</span><div class="ig-meta"><b>soraya.jimenez</b></div><span class="ig-dots">•••</span></div>
+          <img src="assets/posts/ice-bobba.webp" alt="Post · Ice Bobba Tea" loading="lazy" width="900" height="1125">
+          <div class="ig-actions">🤍 💬 📤 <span class="ig-save">🔖</span></div>
+          <div class="ig-cap"><b>soraya.jimenez</b><span data-en="Design · Ice Bobba Tea">Diseño · Ice Bobba Tea</span></div>
+        </div></div>
+        <div class="slide post-slide"><div class="ig-card">
+          <div class="ig-head"><span class="ig-avatar">SJ</span><div class="ig-meta"><b>soraya.jimenez</b></div><span class="ig-dots">•••</span></div>
+          <img src="assets/posts/matcha.webp" alt="Post · Matcha" loading="lazy" width="900" height="1125">
+          <div class="ig-actions">🤍 💬 📤 <span class="ig-save">🔖</span></div>
+          <div class="ig-cap"><b>soraya.jimenez</b><span data-en="Design · Matcha">Diseño · Matcha</span></div>
+        </div></div>
+        <div class="slide post-slide"><div class="ig-card">
+          <div class="ig-head"><span class="ig-avatar">SJ</span><div class="ig-meta"><b>soraya.jimenez</b></div><span class="ig-dots">•••</span></div>
+          <img src="assets/posts/nuevo-sabor.webp" alt="Post · Nuevo sabor, macarons de pistacho" loading="lazy" width="900" height="1125">
+          <div class="ig-actions">🤍 💬 📤 <span class="ig-save">🔖</span></div>
+          <div class="ig-cap"><b>soraya.jimenez</b><span data-en="Design · New flavour (macarons)">Diseño · Nuevo sabor (macarons)</span></div>
+        </div></div>
+        <div class="slide post-slide"><div class="ig-card">
+          <div class="ig-head"><span class="ig-avatar">SJ</span><div class="ig-meta"><b>soraya.jimenez</b></div><span class="ig-dots">•••</span></div>
+          <img src="assets/posts/vivagym.webp" alt="Post · VivaGym" loading="lazy" width="900" height="1125">
+          <div class="ig-actions">🤍 💬 📤 <span class="ig-save">🔖</span></div>
+          <div class="ig-cap"><b>soraya.jimenez</b><span data-en="Design · VivaGym">Diseño · VivaGym</span></div>
+        </div></div>
       </div>
       <button class="car-btn next" aria-label="Siguiente">›</button>
     </div>
